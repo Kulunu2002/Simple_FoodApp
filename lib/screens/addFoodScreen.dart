@@ -45,9 +45,10 @@ class _AddFoodScreenState extends State<AddFoodScreen> {
     if (_photo == null) return;
 
     try {
+      String extention = "simple_food_app_${DateTime.now().microsecondsSinceEpoch.toString().substring(10)}";
       final storageRef = storage
           .ref("/food_upload") //Folder Structure
-          .child(AutofillHints.photo); //File name
+          .child(AutofillHints.photo + extention); //File name
       final taskSnapshot = await storageRef.putFile(
         _photo!,
       );
